@@ -1,4 +1,4 @@
-package beans;
+package se.nicand.beans;
 
 import javax.faces.bean.RequestScoped;
 import javax.inject.Named;

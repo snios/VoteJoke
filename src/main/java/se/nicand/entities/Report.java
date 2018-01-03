@@ -1,15 +1,13 @@
-package entities;
+package se.nicand.entities;
 
 import javax.persistence.*;
 
 @Entity
-public class Vote {
+public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    //Restrict 1-5
-    @Column(name = "VOTE_VALUE")
-    private int value;
+    private String reason;
     @JoinColumn(name = "JOKE_ID")
     @ManyToOne
     private Joke joke;
@@ -22,12 +20,12 @@ public class Vote {
         this.id = id;
     }
 
-    public int getValue() {
-        return value;
+    public String getReason() {
+        return reason;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     public Joke getJoke() {

@@ -1,3 +1,5 @@
+package se.nicand;
+
 import javax.ws.rs.ApplicationPath;
 
 @ApplicationPath("")
