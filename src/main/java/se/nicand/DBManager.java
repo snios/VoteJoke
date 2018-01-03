@@ -1,5 +1,6 @@
 package se.nicand;
 
+import se.nicand.entities.Category;
 import se.nicand.entities.Joke;
 
 import javax.ejb.Stateless;
@@ -11,7 +12,13 @@ public class DBManager {
     @PersistenceContext(name = "jokedb")
     private EntityManager em;
 
-    public void submitJoke(Joke joke){
-        em.persist(joke);
+    public void submitJoke(String jokeText,int categoryId){
+       Category category = em.find(Category.class,Long.valueOf(categoryId));
+       System.out.println(category.getDescription());
+       Joke joke1 = new Joke();
+       joke1.setCategory(category);
+       joke1.setJokeText(jokeText);
+       em.persist(joke1);
+
     }
 }

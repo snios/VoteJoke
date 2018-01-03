@@ -1,8 +1,6 @@
 package se.nicand.beans;
 
 import se.nicand.DBManager;
-import se.nicand.entities.Category;
-import se.nicand.entities.Joke;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -19,12 +17,9 @@ import java.util.Locale;
 @Named
 @SessionScoped
 public class SubmitJokeBean implements Serializable{
-
     @EJB
     private DBManager dbManager;
 
-    @PersistenceContext(name = "jokedb")
-    private EntityManager em;
 
     private String jokeText = "";
     private int categoeryId = 0;
@@ -50,35 +45,12 @@ public class SubmitJokeBean implements Serializable{
 
     public void submitJoke(){
         if(this.categoeryId > 0){
-            //Joke newJoke =  em.createQuery("select j from Joke j where j.id=1", Joke.class).getSingleResult();
-            //this.jokeText = newJoke.getCategory().getDescription();
-
-            //Long id = new Long(this.categoeryId);
-
-            Category cat = em.createQuery("select c from Category c where c.id =" + this.categoeryId, Category.class).getSingleResult();
-            this.jokeText = cat.getDescription();
-
-            Joke joke = new Joke();
-            joke.setJokeText(this.jokeText);
-            joke.setCategory(cat);
-            dbManager.submitJoke(joke);
-            this.jokeText = cat.getDescription();
-            //this.jokeText = cat.getDescription();
-
-            //newJoke.setJokeText(this.jokeText);
-            //newJoke.setCategory(cat);
-            //em.persist(newJoke);*/
-
-            /*CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery<Category> cq = cb.createQuery(Category.class);
-            Root<Category> root = cq.from(Category.class);
-            cq.select(root);
-            cq.where(cb.equal(root.get(Category.)*/
-
-            //this.jokeText = "Success";
-
+            dbManager.submitJoke(jokeText,categoeryId);
+            jokeText = "success";
         }else{
-            this.jokeText = "Pick category";
+            jokeText = "failed";
+
         }
+
     }
 }
