@@ -9,8 +9,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String description;
-    @OneToMany()
-    private List<Joke> jokes;
+    //@OneToMany()
+    //private List<Joke> jokes;
 
     public long getId() {
         return id;
@@ -28,11 +28,11 @@ public class Category {
         this.description = name;
     }
 
-    public List<Joke> getJokes() {
+    /*public List<Joke> getJokes() {
         return jokes;
     }
 
     public void setJokes(List<Joke> jokes) {
         this.jokes = jokes;
-    }
+    }*/
 }
