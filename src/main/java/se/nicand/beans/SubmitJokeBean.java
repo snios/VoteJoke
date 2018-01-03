@@ -1,7 +1,4 @@
-package beans;
-
-import entities.Category;
-import entities.Joke;
+package se.nicand.beans;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -51,8 +48,8 @@ public class SubmitJokeBean implements Serializable{
 
             //Long id = new Long(this.categoeryId);
 
-            Category cat = em.createQuery("select c from Category c where c.id =" + this.categoeryId, Category.class).getSingleResult();
-            this.jokeText = cat.getDescription();
+            //Category cat = em.createQuery("select c from Category c where c.id =" + this.categoeryId, Category.class).getSingleResult();
+            //this.jokeText = cat.getDescription();
             /*Joke joke = new Joke();
             joke.setJokeText(this.jokeText);
             joke.setCategory(cat);
