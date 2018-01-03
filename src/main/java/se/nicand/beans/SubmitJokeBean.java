@@ -1,5 +1,9 @@
 package se.nicand.beans;
 
+import se.nicand.DBManager;
+import se.nicand.entities.Category;
+import se.nicand.entities.Joke;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -15,6 +19,9 @@ import java.util.Locale;
 @Named
 @SessionScoped
 public class SubmitJokeBean implements Serializable{
+
+    @EJB
+    private DBManager dbManager;
 
     @PersistenceContext(name = "jokedb")
     private EntityManager em;
@@ -48,13 +55,14 @@ public class SubmitJokeBean implements Serializable{
 
             //Long id = new Long(this.categoeryId);
 
-            //Category cat = em.createQuery("select c from Category c where c.id =" + this.categoeryId, Category.class).getSingleResult();
-            //this.jokeText = cat.getDescription();
-            /*Joke joke = new Joke();
+            Category cat = em.createQuery("select c from Category c where c.id =" + this.categoeryId, Category.class).getSingleResult();
+            this.jokeText = cat.getDescription();
+
+            Joke joke = new Joke();
             joke.setJokeText(this.jokeText);
             joke.setCategory(cat);
-            em.persist(joke);*/
-
+            dbManager.submitJoke(joke);
+            this.jokeText = cat.getDescription();
             //this.jokeText = cat.getDescription();
 
             //newJoke.setJokeText(this.jokeText);
@@ -67,7 +75,7 @@ public class SubmitJokeBean implements Serializable{
             cq.select(root);
             cq.where(cb.equal(root.get(Category.)*/
 
-            this.jokeText = "Success";
+            //this.jokeText = "Success";
 
         }else{
             this.jokeText = "Pick category";
