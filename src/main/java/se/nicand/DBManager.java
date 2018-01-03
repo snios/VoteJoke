@@ -2,10 +2,15 @@ package se.nicand;
 
 import se.nicand.entities.Category;
 import se.nicand.entities.Joke;
+import se.nicand.entities.Joke_;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.List;
 
 @Stateless(name = "se.nicand.DBManager")
 public class DBManager {
@@ -19,6 +24,17 @@ public class DBManager {
        joke1.setCategory(category);
        joke1.setJokeText(jokeText);
        em.persist(joke1);
+
+    }
+
+    public List<Joke> getAllJokes(){
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Joke>  cq = cb.createQuery(Joke.class);
+        List<Joke> jokes = em.createQuery(cq).getResultList();
+        return jokes;
+    }
+
+    public void getJokesByCategory(){
 
     }
 }
