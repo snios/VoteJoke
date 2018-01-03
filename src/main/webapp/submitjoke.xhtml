@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Title</title>
-</head>
-<body>
+<html
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <title>Submit Vote</title>
+    <meta name="author" content="The Author"></meta>
+</h:head>
+<!-- Add 50px padding top to the body for the navbar -->
+<h:body style="padding-top: 50px; padding-bottom: 20px;">
+    <b:container>
+        <b:form id="submitJoke">
+            <b:row>
+                <b:column col-md="12">
+                    <b:inputTextarea value="#{submitJokeBean.jokeText}" placeholder="Type joke here..."></b:inputTextarea>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:column col-md="8">
+                    <b:selectOneMenu value="#{submitJokeBean.categoeryId}">
+                        <f:selectItem itemLabel="(Please select category)" itemValue="0" />
+                        <f:selectItem itemLabel="Sex" itemValue="1"/>
+                        <f:selectItem itemLabel="Bellman" itemValue="2" />
+                        <f:selectItem itemLabel="Sport" itemValue="3"/>
+                    </b:selectOneMenu>
+                </b:column>
+                <b:column col-md="4">
+                    <b:commandButton look="success" value="Submit Joke" update="testlabel"></b:commandButton>
+                </b:column>
+            </b:row>
+            <b:row>
+                <b:label id="testlabel" value="#{submitJokeBean.categoeryId}"></b:label>
+                <b:label id="joketext" value="#{submitJokeBean.jokeText}"></b:label>
+            </b:row>
+        </b:form>
+    </b:container>
 
-</body>
+</h:body>
 </html>

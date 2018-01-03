@@ -5,5 +5,5 @@ import javax.persistence.PersistenceContext;
 @Stateless(name = "DBManager")
 public class DBManager {
     @PersistenceContext(name = "jokedb")
-    EntityManager em;
+    private EntityManager em;
 }
