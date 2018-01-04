@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Named
 @SessionScoped
 public class NavigationBean implements Serializable{
-    private String page ="submitjoke.xhtml";
+    private String page ="jokecarousell.xhtml";
 
 
     public String getPage() {
