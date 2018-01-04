@@ -6,9 +6,9 @@
              xmlns:ui="http://java.sun.com/jsf/facelets"
              xmlns:p="http://primefaces.org/ui"
              xmlns:fn="http://java.sun.com/jsp/jstl/functions">
-    <b:container>
+
         <h:form id="form">
-            <p:carousel value="#{jokeBean.jokes}" headerText="Responsive" var="joke2" itemStyle="text-align:center" responsive="true">
+                <p:carousel value="#{jokeBean.jokes}" headerText="Responsive" var="joke2" style="width: 250px" itemStyle="text-align:center" responsive="true" numVisible="1">
                 <p:panelGrid columns="1" style="width:100%;margin:10px 0px" columnClasses="value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
                         <h:graphicImage library="images" name="#{joke2.category.description}.png" width="50px" height="50px"/>
@@ -16,9 +16,14 @@
                     <h:outputText value="#{joke2.jokeText}" />
                 </p:panelGrid>
                 <f:facet name="footer">
+
+                    Rate joke:
+                    <p:rating value="#{jokeBean.rating}" cancel="false" stars="5">
+                        <p:ajax event="rate" listener="#{jokeBean.onrate}" update="messages"  />
+                    </p:rating>
                     In total there are #{fn:length(jokeBean.jokes)} jokes.
                 </f:facet>
             </p:carousel>
         </h:form>
-    </b:container>
+
 </ui:fragment>
