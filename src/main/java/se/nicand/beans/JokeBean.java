@@ -18,7 +18,6 @@ public class JokeBean implements Serializable {
     DBManager dbManager;
 
     private List<Joke> jokes;
-    private String  snipp = "snippa";
 
     @PostConstruct
     public void init(){
@@ -42,11 +41,4 @@ public class JokeBean implements Serializable {
         this.jokes = jokes;
     }
 
-    public String getSnipp() {
-        return snipp;
-    }
-
-    public void setSnipp(String snipp) {
-        this.snipp = snipp;
-    }
 }
