@@ -22,7 +22,7 @@ public class SubmitJokeBean implements Serializable{
 
 
     private String jokeText = "";
-    private int categoeryId = 0;
+    private int categoryId = 0;
 
     public SubmitJokeBean() {
     }
@@ -36,16 +36,16 @@ public class SubmitJokeBean implements Serializable{
     }
 
     public int getCategoeryId() {
-        return categoeryId;
+        return categoryId;
     }
 
     public void setCategoeryId(int categoeryId) {
-        this.categoeryId = categoeryId;
+        this.categoryId = categoeryId;
     }
 
     public void submitJoke(){
-        if(this.categoeryId > 0){
-            dbManager.submitJoke(jokeText,categoeryId);
+        if(this.categoryId > 0){
+            dbManager.submitJoke(jokeText,categoryId);
             jokeText = "success";
         }else{
             jokeText = "failed";
