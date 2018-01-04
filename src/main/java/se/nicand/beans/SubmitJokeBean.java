@@ -1,18 +1,14 @@
 package se.nicand.beans;
 
 import se.nicand.DBManager;
+import se.nicand.entities.Category;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.io.Serializable;
-import java.*;
-import java.util.Locale;
+import java.util.List;
 
 @Named
 @SessionScoped
@@ -20,9 +16,14 @@ public class SubmitJokeBean implements Serializable{
     @EJB
     private DBManager dbManager;
 
-
+    private List<Category> categories;
     private String jokeText = "";
-    private int categoeryId = 0;
+    private int categoryId = 0;
+
+    @PostConstruct
+    public void init(){
+        categories = dbManager.getCategories();
+    }
 
     public SubmitJokeBean() {
     }
@@ -36,21 +37,32 @@ public class SubmitJokeBean implements Serializable{
     }
 
     public int getCategoeryId() {
-        return categoeryId;
+        return categoryId;
     }
 
     public void setCategoeryId(int categoeryId) {
-        this.categoeryId = categoeryId;
+        this.categoryId = categoeryId;
     }
 
-    public void submitJoke(){
-        if(this.categoeryId > 0){
-            dbManager.submitJoke(jokeText,categoeryId);
+    public List<Category> getCategories() {
+        this.categories = dbManager.getCategories();
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public String submitJoke(){
+        if(this.categoryId > 0){
+            dbManager.submitJoke(jokeText,categoryId);
             jokeText = "success";
+            return "index.jsf?faces-redirect=true";
         }else{
             jokeText = "failed";
 
         }
 
+        return null;
     }
 }

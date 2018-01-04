@@ -37,4 +37,12 @@ public class DBManager {
     public void getJokesByCategory(){
 
     }
+
+    public List<Category> getCategories() {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Category> cq = cb.createQuery(Category.class);
+        List<Category> result = em.createQuery(cq).getResultList();
+        return  result;
+
+    }
 }

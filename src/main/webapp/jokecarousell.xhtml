@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:b="http://bootsfaces.net/ui"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui">
+    <b:container>
+        <h:form>
+            <p:dataScroller value="#{jokeBean.jokes}" var="joke" chunkSize="10">
+                <h:panelGrid columns="1" style="width:100%" columnClasses="detail">
+                    <p:outputPanel>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <h:outputText value="#{joke.jokeText}" style="font-weight: bold"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
+                </h:panelGrid>
+            </p:dataScroller>
+        </h:form>
+    </b:container>
+</ui:fragment>
