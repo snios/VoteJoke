@@ -6,7 +6,7 @@
              xmlns:ui="http://java.sun.com/jsf/facelets"
              xmlns:p="http://primefaces.org/ui">
     <b:container>
-        <b:form>
+        <h:form>
             <p:dataScroller value="#{jokeBean.jokes}" var="joke" chunkSize="10">
                 <h:panelGrid columns="1" style="width:100%" columnClasses="detail">
                     <p:outputPanel>
@@ -16,10 +16,6 @@
                     </p:outputPanel>
                 </h:panelGrid>
             </p:dataScroller>
-        </b:form>
-
+        </h:form>
     </b:container>
-
-
-
 </ui:fragment>
