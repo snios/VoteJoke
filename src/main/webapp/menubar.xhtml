@@ -3,7 +3,7 @@
 <ui:fragment xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
              xmlns:b="http://bootsfaces.net/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<b:navBar brand="VoteJoke" brandHref="#" inverse="true" fixed="top">
+<b:navBar brand="VoteJoke" update="@(.content)" onclick="ajax:navigationBean.setPage('jokecarousell.xhtml')" inverse="true" fixed="top">
     <b:navbarLinks>
         <b:navLink value="Submit Joke" update="@(.content)" onclick="ajax:navigationBean.setPage('submitjoke.xhtml')"></b:navLink>
         <b:navLink value="Link" href="#"></b:navLink>
