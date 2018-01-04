@@ -4,7 +4,8 @@
              xmlns:b="http://bootsfaces.net/ui"
              xmlns:f="http://java.sun.com/jsf/core"
              xmlns:ui="http://java.sun.com/jsf/facelets"
-             xmlns:p="http://primefaces.org/ui">
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <b:container>
         <h:form>
             <p:dataScroller value="#{jokeBean.jokes}" var="joke" chunkSize="10">
@@ -18,4 +19,24 @@
             </p:dataScroller>
         </h:form>
     </b:container>
+
+    <b:container>
+        <h:form id="form">
+            <p:carousel value="#{jokeBean.jokes}" headerText="Responsive" var="joke2" itemStyle="text-align:center" responsive="true">
+                <p:panelGrid columns="1" style="width:100%;margin:10px 0px" columnClasses="value" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <h:outputText value="#{joke2.category.description}"/>
+                    </f:facet>
+
+                    <h:outputText value="#{joke2.jokeText}" />
+
+                </p:panelGrid>
+
+                <f:facet name="footer">
+                    In total there are #{fn:length(jokeBean.jokes)} jokes.
+                </f:facet>
+            </p:carousel>
+        </h:form>
+    </b:container>
+
 </ui:fragment>
