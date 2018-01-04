@@ -7,25 +7,11 @@
              xmlns:p="http://primefaces.org/ui"
              xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <b:container>
-        <h:form>
-            <p:dataScroller value="#{jokeBean.jokes}" var="joke" chunkSize="10">
-                <h:panelGrid columns="1" style="width:100%" columnClasses="detail">
-                    <p:outputPanel>
-                        <h:panelGrid columns="1" cellpadding="5">
-                            <h:outputText value="#{joke.jokeText}" style="font-weight: bold"/>
-                        </h:panelGrid>
-                    </p:outputPanel>
-                </h:panelGrid>
-            </p:dataScroller>
-        </h:form>
-    </b:container>
-
-    <b:container>
         <h:form id="form">
             <p:carousel value="#{jokeBean.jokes}" headerText="Responsive" var="joke2" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="1" style="width:100%;margin:10px 0px" columnClasses="value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
-                        <h:outputText value="#{joke2.category.description}"/>
+                        <h:graphicImage library="images" name="nsfw.png" width="50px" height="50px"/>
                     </f:facet>
 
                     <h:outputText value="#{joke2.jokeText}" />
@@ -38,5 +24,4 @@
             </p:carousel>
         </h:form>
     </b:container>
-
 </ui:fragment>

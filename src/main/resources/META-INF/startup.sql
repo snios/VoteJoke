@@ -1,4 +1,4 @@
-INSERT INTO CATEGORY (description) VALUES ('Sex')
+INSERT INTO CATEGORY (description) VALUES ('nsfw')
 INSERT INTO CATEGORY (description) VALUES ('Bellman')
 INSERT INTO CATEGORY (description) VALUES ('Sport')
 INSERT INTO JOKE (JOKETEXT,CATEGORY_ID) VALUES ('Det var en gång...',1)
