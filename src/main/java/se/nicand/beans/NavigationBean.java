@@ -1,21 +1,18 @@
 package se.nicand.beans;
 
+import se.nicand.DBManager;
+
 import javax.annotation.PostConstruct;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 
 @Named
 @SessionScoped
 public class NavigationBean implements Serializable{
+    private String page ="submitjoke.xhtml";
 
-    private String page ="menubar.xhtml";
-
-    @PostConstruct
-    public void init(){
-        page="menubar.xhtml";
-    }
 
     public String getPage() {
         return page;
