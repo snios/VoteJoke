@@ -11,13 +11,10 @@
             <p:carousel value="#{jokeBean.jokes}" headerText="Responsive" var="joke2" itemStyle="text-align:center" responsive="true">
                 <p:panelGrid columns="1" style="width:100%;margin:10px 0px" columnClasses="value" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
-                        <h:graphicImage library="images" name="nsfw.png" width="50px" height="50px"/>
+                        <h:graphicImage library="images" name="#{joke2.category.description}.png" width="50px" height="50px"/>
                     </f:facet>
-
                     <h:outputText value="#{joke2.jokeText}" />
-
                 </p:panelGrid>
-
                 <f:facet name="footer">
                     In total there are #{fn:length(jokeBean.jokes)} jokes.
                 </f:facet>
