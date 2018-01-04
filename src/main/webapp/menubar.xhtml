@@ -2,14 +2,17 @@
 <!DOCTYPE html>
 <ui:fragment xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
              xmlns:b="http://bootsfaces.net/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:form>
-        <b:navBar brand="VoteJoke" brandHref="index.xhtml" inverse="true" fixed="top">
-            <b:navbarLinks>
-                <b:navLink value="Submit Joke" update="@(.content)"
-                           onclick="ajax:navigationBean.setPage('submitjoke.xhtml')"></b:navLink>
-                <b:navLink value="Start" update="@(.content)"
-                           onclick="ajax:navigationBean.setPage('jokecarousell.xhtml')"></b:navLink>
-            </b:navbarLinks>
-        </b:navBar>
-    </h:form>
+    <b:container>
+        <h:form>
+            <b:navBar brand="VoteJoke" brandHref="index.xhtml" inverse="true" fixed="top">
+                <b:navbarLinks>
+                    <b:navLink value="Submit Joke" update="@(.content)"
+                               onclick="ajax:navigationBean.setPage('submitjoke.xhtml')"></b:navLink>
+                    <b:navLink value="Start" update="@(.content)"
+                               onclick="ajax:navigationBean.setPage('jokecarousell.xhtml')"></b:navLink>
+                </b:navbarLinks>
+            </b:navBar>
+        </h:form>
+    </b:container>
+
 </ui:fragment>
