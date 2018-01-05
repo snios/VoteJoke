@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless(name = "se.nicand.DBManager")
@@ -36,6 +37,19 @@ public class DBManager {
 
     public void getJokesByCategory(){
 
+    }
+
+    public ArrayList<Joke> getJokesByCatId(int categoryId){
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Joke>  cq = cb.createQuery(Joke.class);
+        List<Joke> jokes = em.createQuery(cq).getResultList();
+        ArrayList<Joke> catJoke = new ArrayList<Joke>();
+        for(Joke jk : jokes){
+            if(jk.getCategory().getId() == categoryId){
+                catJoke.add(jk);
+            }
+        }
+        return catJoke;
     }
 
     public List<Category> getCategories() {
