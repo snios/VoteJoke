@@ -21,12 +21,11 @@
                 </b:column>
                 <b:column col-md="4">
                     <b:commandButton look="success" value="Submit Joke" action="#{submitJokeBean.submitJoke}"
-                                     update="testlabel joketext "></b:commandButton>
+                                     update="submitJoke"></b:commandButton>
                 </b:column>
             </b:row>
-            <b:row>
-                <b:label id="testlabel" value="#{submitJokeBean.categoeryId}"></b:label>
-                <b:label id="joketext" value="#{submitJokeBean.jokeText}"></b:label>
+            <b:row col-md="12">
+                <b:label value="#{submitJokeBean.statusText}"></b:label>
             </b:row>
         </b:form>
 

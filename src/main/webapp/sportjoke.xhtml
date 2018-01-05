@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:b="http://bootsfaces.net/ui"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:p="http://primefaces.org/ui">
+
+
+    <b:container>
+        <h:form>
+            <p:dataGrid var="joke" value="#{voteSportBean.jokes}" columns="1" layout="grid"
+                        rows="8" paginator="true" id="jokes"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="4,8,16">
+
+                <f:facet name="header">
+                    Vote on Sport Jokes
+                </f:facet>
+
+                <p:panel header="#{joke.category.description}" style="text-align:center">
+
+                    <f:facet name="header">
+                        <h:graphicImage library="images" name="#{joke.category.description}.png" width="50px" height="50px"/>
+                    </f:facet>
+
+                    <h:outputText value="#{joke.jokeText}"/>
+
+                    <f:facet name="footer">
+                        <b:row style="text-align:center">
+                            <p:outputLabel value="Rate joke:"></p:outputLabel>
+                            <p:rating value="#{voteSportBean.rating}" cancel="false" stars="5" style="text-align:center">
+                                <p:ajax event="rate" listener="#{voteSportBean.onrate}" update="messages"  />
+                            </p:rating>
+                        </b:row>
+                        <b:row style="text-align:center">
+                            <b:commandButton look="danger" value="Report Joke" style="text-align:center"></b:commandButton>
+                        </b:row>
+                    </f:facet>
+                    <!-- <h:panelGrid columns="1" style="width:100%">
+                         <h:outputText value="#{joke.jokeText}">
+                         </h:outputText>
+                         <p:button outcome="productDetail" icon="ui-icon-star" title="Icon Only">
+                             <f:param name="productId" value="30" />
+                         </p:button>
+                     </h:panelGrid>-->
+                </p:panel>
+            </p:dataGrid>
+        </h:form>
+    </b:container>
+
+</ui:fragment>

@@ -19,6 +19,7 @@ public class SubmitJokeBean implements Serializable{
     private List<Category> categories;
     private String jokeText = "";
     private int categoryId = 0;
+    private String statusText = "";
 
     @PostConstruct
     public void init(){
@@ -26,6 +27,14 @@ public class SubmitJokeBean implements Serializable{
     }
 
     public SubmitJokeBean() {
+    }
+
+    public String getStatusText() {
+        return statusText;
+    }
+
+    public void setStatusText(String statusText) {
+        this.statusText = statusText;
     }
 
     public String getJokeText() {
@@ -56,13 +65,12 @@ public class SubmitJokeBean implements Serializable{
     public String submitJoke(){
         if(this.categoryId > 0){
             dbManager.submitJoke(jokeText,categoryId);
-            jokeText = "success";
+            jokeText = "";
+            statusText = "Joke was successfully submitted!";
             return "index.jsf?faces-redirect=true";
         }else{
-            jokeText = "failed";
-
+            statusText = "Joke was not submitted, make sure category was picked!";
         }
-
         return null;
     }
 }
