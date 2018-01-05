@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html
+<html xmlns="http://www.w3.org/1999/xhtml"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://java.sun.com/jsf/core"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:ui="http://java.sun.com/jsf/facelets">
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Joke Vote</title>
     <meta name="author" content="The Author"></meta>
+    <h:outputStylesheet library="css" name="growl.css"  />
 </h:head>
 <!-- Add 50px padding top to the body for the navbar -->
 <h:body style="padding-top: 50px; padding-bottom: 20px;">
+    <p:growl id="messages" showDetail="true" life="2000" />
     <ui:include src="menubar.xhtml" />
     <b:jumbotron>
         <b:container>
-            <p>
                 <h2>Why was Santa's little helper feeling depressed? <b>- Because he has low elf esteem</b>  </h2>
-            </p>
         </b:container>
     </b:jumbotron>
     <b:container>
@@ -26,20 +27,8 @@
                 <ui:include src="#{navigationBean.page}" />
             </b:column>
         </b:row>
-
-        <b:row>
-            <b:column col-md="4">
-                <h3>How did Darth Vader know what Luke was getting for Christmas? <b>- He felt his presents</b> </h3>
-            </b:column>
-            <b:column col-md="4">
-                <h3>I got a reversible jacket for Christmas, I can't wait to see how it turns out</h3>
-            </b:column>
-            <b:column col-md="4">
-                <h3>Why is no one friends with Dracula?  <b>- Because he's a pain in the neck</b> </h3>
-            </b:column>
-        </b:row>
-        <hr/>
-
     </b:container>
 </h:body>
 </html>
+
+
