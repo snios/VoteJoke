@@ -22,7 +22,7 @@ public class JokeBean implements Serializable {
     DBManager dbManager;
 
     private List<Joke> jokes;
-    private int rating;
+    private int rating = 4;
 
     @PostConstruct
     public void init(){
@@ -32,6 +32,7 @@ public class JokeBean implements Serializable {
     public void onrate(RateEvent rateEvent) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
+
     }
     public DBManager getDbManager() {
         return dbManager;

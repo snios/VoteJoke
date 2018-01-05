@@ -3,6 +3,7 @@ package se.nicand;
 import se.nicand.entities.Category;
 import se.nicand.entities.Joke;
 import se.nicand.entities.Joke_;
+import se.nicand.entities.Vote;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -43,6 +44,14 @@ public class DBManager {
         CriteriaQuery<Category> cq = cb.createQuery(Category.class);
         List<Category> result = em.createQuery(cq).getResultList();
         return  result;
+
+    }
+
+    public void voteForJoke(Joke joke, int rating){
+        Vote vote = new Vote();
+        vote.setJoke(joke);
+        vote.setValue(rating);
+        em.persist(vote);
 
     }
 }
