@@ -20,6 +20,7 @@ public class VoteNSFWBean implements Serializable{
     private ArrayList<Joke> jokes;
     private int rating;
     private Joke selectedJoke;
+    private String reportReason = "";
 
     @EJB
     private DBManager dbManager;
@@ -53,6 +54,14 @@ public class VoteNSFWBean implements Serializable{
         this.selectedJoke = selectedJoke;
     }
 
+    public String getReportReason() {
+        return reportReason;
+    }
+
+    public void setReportReason(String reportReason) {
+        this.reportReason = reportReason;
+    }
+
     public void onrate(RateEvent rateEvent) {
         String selectedObjID = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("selectedObj");
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
@@ -62,7 +71,8 @@ public class VoteNSFWBean implements Serializable{
 
     public void report(){
         if(selectedJoke != null){
-            dbManager.reportJoke(selectedJoke.getId(), "Fult Språk");
+            dbManager.reportJoke(selectedJoke.getId(), reportReason);
+            reportReason = "";
         }
     }
 }
