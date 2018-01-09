@@ -32,10 +32,13 @@
                             <p:outputLabel value="Rate joke:"></p:outputLabel>
                             <p:rating value="#{votePoliticsBean.rating}" cancel="false" stars="5" style="text-align:center">
                                 <p:ajax event="rate" listener="#{votePoliticsBean.onrate}" update="messages"  />
+                                <input type="hidden" name="selectedObj" value="#{joke.id}"/>
                             </p:rating>
                         </b:row>
                         <b:row style="text-align:center">
-                            <b:commandButton look="danger" value="Report Joke" style="text-align:center"></b:commandButton>
+                            <b:commandButton look="danger" value="Report Joke" style="text-align:center" action="#{votePoliticsBean.report}">
+                                <f:setPropertyActionListener value="#{joke}" target="#{votePoliticsBean.selectedJoke}" />
+                            </b:commandButton>
                         </b:row>
                     </f:facet>
                 </p:panel>
