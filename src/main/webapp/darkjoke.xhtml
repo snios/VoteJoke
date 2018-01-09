@@ -10,13 +10,13 @@
 
     <b:container>
         <h:form>
-            <p:dataGrid var="joke" value="#{voteSportBean.jokes}" columns="1" layout="grid"
+            <p:dataGrid var="joke" value="#{voteDarkBean.jokes}" columns="1" layout="grid"
                         rows="8" paginator="true" id="jokes"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="4,8,16">
 
                 <f:facet name="header">
-                    Vote on Sport Jokes
+                    Vote on Dark Jokes
                 </f:facet>
 
                 <p:panel header="#{joke.category.description}" style="text-align:center">
@@ -30,19 +30,15 @@
                     <f:facet name="footer">
                         <b:row style="text-align:center">
                             <p:outputLabel value="Rate joke:"></p:outputLabel>
-                            <p:rating value="#{voteSportBean.rating}" cancel="false" stars="5" style="text-align:center">
-                                <p:ajax event="rate" listener="#{voteSportBean.onrate}" update="messages"/>
-                                <input type="hidden" name="selectedObj" value="#{joke.id}"/>
+                            <p:rating value="#{voteDarkBean.rating}" cancel="false" stars="5" style="text-align:center">
+                                <p:ajax event="rate" listener="#{voteDarkBean.onrate}" update="messages"  />
                             </p:rating>
                         </b:row>
                         <b:row style="text-align:center">
-                            <b:commandButton look="danger" value="Report Joke" style="text-align:center" action="#{voteSportBean.report}">
-                                <f:setPropertyActionListener value="#{joke}" target="#{voteSportBean.selectedJoke}" />
-                            </b:commandButton>
+                            <b:commandButton look="danger" value="Report Joke" style="text-align:center"></b:commandButton>
                         </b:row>
                     </f:facet>
                 </p:panel>
-                <p:outputLabel value="#{voteSportBean.selectedJoke.jokeText}"></p:outputLabel>
             </p:dataGrid>
         </h:form>
     </b:container>

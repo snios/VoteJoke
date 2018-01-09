@@ -57,4 +57,5 @@ public class Joke implements Serializable{
     public void setJokeText(String jokeText) {
         this.jokeText = jokeText;
     }
+
 }
