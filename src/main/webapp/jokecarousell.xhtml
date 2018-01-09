@@ -16,13 +16,12 @@
                     <h:outputText value="#{joke2.jokeText}" />
                 </p:panelGrid>
                 <f:facet name="footer">
-
                     Rate joke:
                     <p:rating value="#{jokeBean.rating}" cancel="false" stars="5">
                         <p:ajax event="rate" listener="#{jokeBean.onrate}" update="messages" />
                         <input type="hidden" name="selectedObj" value="#{joke2.id}"/>
                      </p:rating>
-                    In total there are #{fn:length(jokeBean.jokes)} jokes.
+                    In total there are #{fn:length(jokeBean.jokes)} jokes. #{joke2.jokeText}
                 </f:facet>
             </p:carousel>
         </h:form>
