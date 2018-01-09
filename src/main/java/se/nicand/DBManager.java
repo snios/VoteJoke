@@ -2,6 +2,7 @@ package se.nicand;
 
 import se.nicand.entities.Category;
 import se.nicand.entities.Joke;
+import se.nicand.entities.Report;
 import se.nicand.entities.Vote;
 
 import javax.ejb.Stateless;
@@ -66,6 +67,15 @@ public class DBManager {
         vote.setJoke(joke);
         vote.setValue(rating);
         em.persist(vote);
+        em.flush();
+    }
+
+    public void reportJoke(long jokeid, String reason){
+        Report report = new Report();
+        Joke joke = em.find(Joke.class,jokeid);
+        report.setJoke(joke);
+        report.setReason(reason);
+        em.persist(report);
         em.flush();
     }
 
