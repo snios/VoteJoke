@@ -19,6 +19,7 @@ public class VoteNSFWBean implements Serializable{
 
     private ArrayList<Joke> jokes;
     private int rating;
+    private Joke selectedJoke;
 
     @EJB
     private DBManager dbManager;
@@ -42,6 +43,14 @@ public class VoteNSFWBean implements Serializable{
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public Joke getSelectedJoke() {
+        return selectedJoke;
+    }
+
+    public void setSelectedJoke(Joke selectedJoke) {
+        this.selectedJoke = selectedJoke;
     }
 
     public void onrate(RateEvent rateEvent) {
