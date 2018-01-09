@@ -6,7 +6,12 @@
         <h:form>
             <b:navBar brand="VoteJoke" brandHref="index.xhtml" inverse="true" fixed="top">
                 <b:navbarLinks>
-                    <b:navLink value="Submit Joke" update="@(.content)"
+                    <b:navLink value="RANDOM"/>
+                    <b:navLink value="NSFW"/>
+                    <b:navLink value="DARK"/>
+                    <b:navLink value="SPORT"/>
+                    <b:navLink value="INSULT"/>
+                    <b:navLink value="SUBMIT JOKE" update="@(.content)"
                                onclick="ajax:navigationBean.setPage('submitjoke.xhtml')"></b:navLink>
                     <b:navLink value="Vote" update="@(.content)"
                                onclick="ajax:navigationBean.setPage('jokevote.xhtml')"></b:navLink>
@@ -28,5 +33,4 @@
             </b:navBar>
         </h:form>
     </b:container>
-
 </ui:fragment>
