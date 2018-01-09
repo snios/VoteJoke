@@ -60,13 +60,14 @@ public class VoteSportBean implements Serializable{
         String selectedObjID = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("selectedObj");
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + ((Integer) rateEvent.getRating()).intValue() +":"+ selectedObjID.toString());
         FacesContext.getCurrentInstance().addMessage(null, message);
+        dbManager.voteForJoke(Long.valueOf(selectedObjID), ((Integer) rateEvent.getRating()).intValue());
         //Todo: Call dbmanager
 
     }
 
     public void report(){
         if(selectedJoke != null){
-            //Todo: Call dbmanager
+            dbManager.reportJoke(selectedJoke.getId(), "Fult Språk");
         }
     }
 }

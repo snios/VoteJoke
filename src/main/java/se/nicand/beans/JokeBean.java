@@ -35,8 +35,8 @@ public class JokeBean implements Serializable {
         UIComponent ratingComponent = rateEvent.getComponent();
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
-        String jokeid = ratingComponent.getAttributes().get("selectedJoke").toString();
-        dbManager.voteForJoke(jokeid,rating);
+        //String jokeid = ratingComponent.getAttributes().get("selectedJoke").toString();
+        //dbManager.voteForJoke(jokeid,rating);
 
     }
     public DBManager getDbManager() {

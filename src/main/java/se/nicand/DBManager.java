@@ -1,9 +1,6 @@
 package se.nicand;
 
-import se.nicand.entities.Category;
-import se.nicand.entities.Joke;
-import se.nicand.entities.Joke_;
-import se.nicand.entities.Vote;
+import se.nicand.entities.*;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -61,12 +58,22 @@ public class DBManager {
 
     }
 
-    public void voteForJoke(String jokeid, int rating){
+    public void voteForJoke(long jokeid, int rating){
         Vote vote = new Vote();
         Joke joke = em.find(Joke.class,jokeid);
         vote.setJoke(joke);
         vote.setValue(rating);
         em.persist(vote);
+        em.flush();
 
+    }
+
+    public void reportJoke(long jokeid, String reason){
+        Report report = new Report();
+        Joke joke = em.find(Joke.class,jokeid);
+        report.setJoke(joke);
+        report.setReason(reason);
+        em.persist(report);
+        em.flush();
     }
 }
