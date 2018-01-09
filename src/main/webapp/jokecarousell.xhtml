@@ -20,7 +20,7 @@
                     Rate joke:
                     <p:rating value="#{jokeBean.rating}" cancel="false" stars="5">
                         <p:ajax event="rate" listener="#{jokeBean.onrate}" update="messages" />
-                        <f:attribute name="selectedJoke" value="#{joke2.id}" />
+                        <input type="hidden" name="selectedObj" value="#{joke2.id}"/>
                      </p:rating>
                     In total there are #{fn:length(jokeBean.jokes)} jokes.
                 </f:facet>

@@ -6,7 +6,6 @@ import se.nicand.entities.Joke;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -36,7 +35,8 @@ public class JokeBean implements Serializable {
         UIComponent ratingComponent = rateEvent.getComponent();
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
-        dbManager.voteForJoke(3L,rating);
+        String jokeid = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("selectedObj");
+        dbManager.voteForJoke(Long.valueOf(jokeid),rating);
 
     }
     public DBManager getDbManager() {
