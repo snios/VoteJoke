@@ -5,6 +5,7 @@ import se.nicand.entities.Joke;
 import se.nicand.entities.Joke_;
 import se.nicand.entities.Vote;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,6 +29,7 @@ public class DBManager {
        em.persist(joke1);
 
     }
+
 
     public List<Joke> getAllJokes(){
         CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -61,12 +63,14 @@ public class DBManager {
 
     }
 
-    public void voteForJoke(String jokeid, int rating){
+    public void voteForJoke(long jokeid, int rating){
         Vote vote = new Vote();
         Joke joke = em.find(Joke.class,jokeid);
         vote.setJoke(joke);
         vote.setValue(rating);
         em.persist(vote);
-
+        em.flush();
     }
+
+
 }

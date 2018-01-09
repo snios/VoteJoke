@@ -29,14 +29,14 @@ public class JokeBean implements Serializable {
     @PostConstruct
     public void init(){
         this.jokes = dbManager.getAllJokes();
+
     }
 
     public void onrate(RateEvent rateEvent) {
         UIComponent ratingComponent = rateEvent.getComponent();
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
         FacesContext.getCurrentInstance().addMessage(null, message);
-        String jokeid = ratingComponent.getAttributes().get("selectedJoke").toString();
-        dbManager.voteForJoke(jokeid,rating);
+        dbManager.voteForJoke(3L,rating);
 
     }
     public DBManager getDbManager() {
@@ -71,4 +71,6 @@ public class JokeBean implements Serializable {
     public void setSelectedJoke(Joke selectedJoke) {
         this.selectedJoke = selectedJoke;
     }
+
+
 }
