@@ -61,8 +61,9 @@ public class DBManager {
 
     }
 
-    public void voteForJoke(Joke joke, int rating){
+    public void voteForJoke(String jokeid, int rating){
         Vote vote = new Vote();
+        Joke joke = em.find(Joke.class,jokeid);
         vote.setJoke(joke);
         vote.setValue(rating);
         em.persist(vote);
