@@ -16,11 +16,8 @@ import java.util.ArrayList;
 @Named
 public class VoteMiscBean {
 
-
     private ArrayList<Joke> jokes;
-    private int rating;
     private Joke selectedJoke;
-    private String reportReason = "";
 
 
 
@@ -40,14 +37,6 @@ public class VoteMiscBean {
         this.jokes = jokes;
     }
 
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
     public Joke getSelectedJoke() {
         return selectedJoke;
     }
@@ -56,25 +45,18 @@ public class VoteMiscBean {
         this.selectedJoke = selectedJoke;
     }
 
-    public String getReportReason() {
-        return reportReason;
-    }
-
-    public void setReportReason(String reportReason) {
-        this.reportReason = reportReason;
-    }
-
-    public void onrate(RateEvent rateEvent) {
-        String selectedObjID = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("selectedObj");
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
-        FacesContext.getCurrentInstance().addMessage(null, message);
-        dbManager.voteForJoke(Long.valueOf(selectedObjID), ((Integer) rateEvent.getRating()).intValue());
-    }
 
     public void report(){
-        if(selectedJoke != null){
-            dbManager.reportJoke(selectedJoke.getId(), reportReason);
-            reportReason = "";
+        if(selectedJoke != null && !selectedJoke.getReportReason().equalsIgnoreCase("")){
+            dbManager.reportJoke(selectedJoke.getId(), selectedJoke.getReportReason());
+        }
+    }
+
+    public void vote(){
+        if(selectedJoke != null && selectedJoke.getRatingValue()>0){
+            dbManager.voteForJoke(selectedJoke.getId(), selectedJoke.getRatingValue());
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + selectedJoke.getRatingValue());
+            FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
 }

@@ -26,26 +26,26 @@
                     </f:facet>
 
                     <h:outputText value="#{joke.jokeText}"/>
-                    <f:facet name="footer">
-                        <b:row style="text-align:center">
-                            <p:outputLabel value="Rate joke:"></p:outputLabel>
-                            <p:rating value="#{votePoliticsBean.rating}" cancel="false" stars="5" style="text-align:center">
-                                <p:ajax event="rate" listener="#{votePoliticsBean.onrate}" update="jokes messages"/>
-                                <input type="hidden" name="selectedObj" value="#{joke.id}"/>
-                            </p:rating>
-                        </b:row>
-                        <br/>
-                        <b:row style="text-align:center">
-                            <b:column span="2" offset="4">
-                                <b:inputText value="#{votePoliticsBean.reportReason}" placeholder="Reason..."></b:inputText>
-                            </b:column>
-                            <b:column span="2">
-                                <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center" action="#{votePoliticsBean.report}" >
-                                    <f:setPropertyActionListener value="#{joke}" target="#{votePoliticsBean.selectedJoke}" />
-                                </b:commandButton>
-                            </b:column>
-                        </b:row>
-                    </f:facet>
+
+                    <b:row style="text-align:center">
+                        <p:outputLabel value="Rate joke:"></p:outputLabel>
+                        <p:rating value="#{joke.ratingValue}" cancel="false" stars="5" style="text-align:center">
+                        </p:rating>
+                        <b:commandButton look="success" value="Submit vote" style="margin: 0 auto text-align:center" action="#{votePoliticsBean.vote}">
+                            <f:setPropertyActionListener value="#{joke}" target="#{votePoliticsBean.selectedJoke}" />
+                        </b:commandButton>
+                    </b:row>
+                    <br/>
+                    <b:row style="text-align:center">
+                        <b:column span="2" offset="4">
+                            <b:inputText value="#{joke.reportReason}" placeholder="Reason..."></b:inputText>
+                        </b:column>
+                        <b:column span="2">
+                            <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center" action="#{votePoliticsBean.report}">
+                                <f:setPropertyActionListener value="#{joke}" target="#{votePoliticsBean.selectedJoke}" />
+                            </b:commandButton>
+                        </b:column>
+                    </b:row>
                 </p:panel>
             </p:dataGrid>
         </h:form>
