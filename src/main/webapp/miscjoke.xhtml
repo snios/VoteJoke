@@ -32,7 +32,7 @@
                         <p:outputLabel value="Rate joke:"></p:outputLabel>
                         <p:rating value="#{joke.ratingValue}" cancel="false" stars="5" style="text-align:center">
                         </p:rating>
-                        <b:commandButton look="success" value="Submit vote" style="margin: 0 auto text-align:center" action="#{voteMiscBean.vote}">
+                        <b:commandButton look="success" value="Submit vote" style="margin: 0 auto text-align:center" action="#{voteMiscBean.vote}" update="messages">
                             <f:setPropertyActionListener value="#{joke}" target="#{voteMiscBean.selectedJoke}" />
                         </b:commandButton>
                     </b:row>
@@ -42,7 +42,7 @@
                             <b:inputText value="#{joke.reportReason}" placeholder="Reason..."></b:inputText>
                         </b:column>
                         <b:column span="2">
-                            <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center" action="#{voteMiscBean.report}">
+                            <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center" action="#{voteMiscBean.report}" update="messages">
                                 <f:setPropertyActionListener value="#{joke}" target="#{voteMiscBean.selectedJoke}" />
                             </b:commandButton>
                         </b:column>
