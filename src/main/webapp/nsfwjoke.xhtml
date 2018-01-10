@@ -14,30 +14,28 @@
                         rows="8" paginator="true" id="jokes"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="4,8,16">
-
                 <f:facet name="header">
                     Vote on NSFW Jokes
                 </f:facet>
-
                 <p:panel header="#{joke.category.description}" style="text-align:center">
-
                     <f:facet name="header">
-                        <h:graphicImage library="images" name="#{joke.category.description}.png" width="50px" height="50px"/>
+                        <h:graphicImage library="images" name="#{joke.category.description}.png" width="50px"
+                                        height="50px"/>
                     </f:facet>
-
                     <h:outputText value="#{joke.jokeText}"/>
-
                     <f:facet name="footer">
                         <b:row style="text-align:center">
-                            <p:outputLabel value="Rate joke:"></p:outputLabel>
+                            <p:outputLabel value="Rate joke:"/>
                             <p:rating value="#{voteNSFWBean.rating}" cancel="false" stars="5" style="text-align:center">
-                                <p:ajax event="rate" listener="#{voteNSFWBean.onrate}" update="messages"  />
+                                <p:ajax event="rate" listener="#{voteNSFWBean.onrate}" update="messages"/>
+                                <f:param name="selectedId" value="#{joke.id}"/>
                                 <input type="hidden" name="selectedObj" value="#{joke.id}"/>
                             </p:rating>
                         </b:row>
                         <b:row style="text-align:center">
-                            <b:commandButton look="danger" value="Report Joke" style="text-align:center" action="#{voteNSFWBean.report}">
-                                <f:setPropertyActionListener value="#{joke}" target="#{voteNSFWBean.selectedJoke}" />
+                            <b:commandButton look="danger" value="Report Joke" style="text-align:center"
+                                             action="#{voteNSFWBean.report}">
+                                <f:setPropertyActionListener value="#{joke}" target="#{voteNSFWBean.selectedJoke}"/>
                             </b:commandButton>
                         </b:row>
                     </f:facet>
