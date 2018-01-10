@@ -50,6 +50,8 @@ public class VoteNSFWBean implements Serializable{
     public void report(){
         if(selectedJoke != null && !selectedJoke.getReportReason().equalsIgnoreCase("")){
             dbManager.reportJoke(selectedJoke.getId(), selectedJoke.getReportReason());
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "Your report was submitted!");
+            FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
 
