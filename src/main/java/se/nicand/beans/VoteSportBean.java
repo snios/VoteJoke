@@ -19,11 +19,7 @@ import java.util.ArrayList;
 public class VoteSportBean implements Serializable{
 
     private ArrayList<Joke> jokes;
-    private int rating = 0;
     private Joke selectedJoke;
-    private String reportReason = "";
-    private String reportReasonTwo = "";
-    private Joke selectedJokeTwo;
 
 
 
@@ -43,14 +39,6 @@ public class VoteSportBean implements Serializable{
         this.jokes = jokes;
     }
 
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
     public Joke getSelectedJoke() {
         return selectedJoke;
     }
@@ -59,43 +47,12 @@ public class VoteSportBean implements Serializable{
         this.selectedJoke = selectedJoke;
     }
 
-    public String getReportReason() {
-        return reportReason;
-    }
-
-    public void setReportReason(String reportReason) {
-        this.reportReason = reportReason;
-    }
-
-    public Joke getSelectedJokeTwo() {
-        return selectedJokeTwo;
-    }
-
-    public void setSelectedJokeTwo(Joke selectedJokeTwo) {
-        this.selectedJokeTwo = selectedJokeTwo;
-    }
-
-    public String getReportReasonTwo() {
-        return reportReasonTwo;
-    }
-
-    public void setReportReasonTwo(String reportReasonTwo) {
-        this.reportReasonTwo = reportReasonTwo;
-    }
-
-    public void onrate(RateEvent rateEvent) {
-        String selectedObjID = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("selectedObj");
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
-        FacesContext.getCurrentInstance().addMessage(null, message);
-        dbManager.voteForJoke(Long.valueOf(selectedObjID), ((Integer) rateEvent.getRating()).intValue());
-        //Todo: Call dbmanager
-
-    }
 
     public void report(){
         if(selectedJoke != null && !selectedJoke.getReportReason().equalsIgnoreCase("")){
             dbManager.reportJoke(selectedJoke.getId(), selectedJoke.getReportReason());
-            reportReason = "";
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "Your report was submitted!");
+            FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
 
