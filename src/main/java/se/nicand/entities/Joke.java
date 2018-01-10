@@ -18,6 +18,9 @@ public class Joke implements Serializable{
     @ManyToOne()
     private Category category;
 
+    private int ratingValue = 0;
+    private String reportReason = "";
+
     public long getId() {
         return id;
     }
@@ -58,4 +61,19 @@ public class Joke implements Serializable{
         this.jokeText = jokeText;
     }
 
+    public int getRatingValue() {
+        return ratingValue;
+    }
+
+    public void setRatingValue(int ratingValue) {
+        this.ratingValue = ratingValue;
+    }
+
+    public String getReportReason() {
+        return reportReason;
+    }
+
+    public void setReportReason(String reportReason) {
+        this.reportReason = reportReason;
+    }
 }

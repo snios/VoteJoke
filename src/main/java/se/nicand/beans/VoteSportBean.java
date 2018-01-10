@@ -22,6 +22,8 @@ public class VoteSportBean implements Serializable{
     private int rating = 0;
     private Joke selectedJoke;
     private String reportReason = "";
+    private String reportReasonTwo = "";
+    private Joke selectedJokeTwo;
 
 
 
@@ -65,6 +67,22 @@ public class VoteSportBean implements Serializable{
         this.reportReason = reportReason;
     }
 
+    public Joke getSelectedJokeTwo() {
+        return selectedJokeTwo;
+    }
+
+    public void setSelectedJokeTwo(Joke selectedJokeTwo) {
+        this.selectedJokeTwo = selectedJokeTwo;
+    }
+
+    public String getReportReasonTwo() {
+        return reportReasonTwo;
+    }
+
+    public void setReportReasonTwo(String reportReasonTwo) {
+        this.reportReasonTwo = reportReasonTwo;
+    }
+
     public void onrate(RateEvent rateEvent) {
         String selectedObjID = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("selectedObj");
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
@@ -75,9 +93,17 @@ public class VoteSportBean implements Serializable{
     }
 
     public void report(){
-        if(selectedJoke != null){
-            dbManager.reportJoke(selectedJoke.getId(), reportReason);
+        if(selectedJoke != null && !selectedJoke.getReportReason().equalsIgnoreCase("")){
+            dbManager.reportJoke(selectedJoke.getId(), selectedJoke.getReportReason());
             reportReason = "";
+        }
+    }
+
+    public void vote(){
+        if(selectedJoke != null && selectedJoke.getRatingValue()>0){
+            dbManager.voteForJoke(selectedJoke.getId(), selectedJoke.getRatingValue());
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + selectedJoke.getRatingValue());
+            FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
 }
