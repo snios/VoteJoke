@@ -11,12 +11,13 @@ public class Joke implements Serializable{
     private long id;
     private String jokeText;
     private boolean isDisabled;
+    private String author;
     @OneToMany(mappedBy = "joke")
     private List<Vote> votes;
     @OneToMany (mappedBy = "joke")
     private List<Report> reports;
     @JoinColumn(name = "CATEGORY_ID",nullable = false)
-    @ManyToOne()
+    @ManyToOne
     private Category category;
 
     private int ratingValue = 0;
@@ -95,4 +96,11 @@ public class Joke implements Serializable{
         this.avarageRating = avarageRating;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        author = author;
+    }
 }
