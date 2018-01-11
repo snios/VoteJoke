@@ -11,6 +11,7 @@ public class Joke implements Serializable{
     private long id;
     private String jokeText;
     private boolean isDisabled;
+    private String Author;
     @OneToMany(mappedBy = "joke")
     private List<Vote> votes;
     @OneToMany (mappedBy = "joke")
@@ -95,4 +96,11 @@ public class Joke implements Serializable{
         this.avarageRating = avarageRating;
     }
 
+    public String getAuthor() {
+        return Author;
+    }
+
+    public void setAuthor(String author) {
+        Author = author;
+    }
 }
