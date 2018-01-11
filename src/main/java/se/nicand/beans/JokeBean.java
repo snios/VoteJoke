@@ -38,13 +38,6 @@ public class JokeBean implements Serializable {
         dbManager.voteForJoke(Long.valueOf(selectedObjID), ((Integer) rateEvent.getRating()).intValue());
 
     }
-    public DBManager getDbManager() {
-        return dbManager;
-    }
-
-    public void setDbManager(DBManager dbManager) {
-        this.dbManager = dbManager;
-    }
 
     public List<Joke> getJokes() {
         this.jokes = dbManager.getAllJokes();

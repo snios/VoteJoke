@@ -9,9 +9,9 @@ public class Joke implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String jokeText = "";
+    private String jokeText;
     private boolean isDisabled;
-    private String author = "";
+    private String author;
     @OneToMany(mappedBy = "joke")
     private List<Vote> votes;
     @OneToMany (mappedBy = "joke")
@@ -20,8 +20,11 @@ public class Joke implements Serializable{
     @ManyToOne
     private Category category;
 
+    @Transient
     private int ratingValue = 0;
+    @Transient
     private String reportReason = "";
+    private double avarageRating = 0;
 
     public long getId() {
         return id;
@@ -92,7 +95,19 @@ public class Joke implements Serializable{
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+        author = author;
     }
 
+    public double getAvarageRating(){
+        double rating = 0;
+        int nVotes = 0;
+        if(votes.size() > 0){
+            for(Vote v: votes){
+                rating += v.getValue();
+                nVotes++;
+            }
+            return rating / nVotes;
+        }
+       return 0;
+    }
 }
