@@ -10,7 +10,8 @@ public class Joke implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String jokeText;
-    @OneToMany (mappedBy = "joke")
+    private boolean isDisabled;
+    @OneToMany(mappedBy = "joke")
     private List<Vote> votes;
     @OneToMany (mappedBy = "joke")
     private List<Report> reports;
@@ -76,6 +77,14 @@ public class Joke implements Serializable{
 
     public void setReportReason(String reportReason) {
         this.reportReason = reportReason;
+    }
+
+    public boolean isDisabled() {
+        return isDisabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        isDisabled = disabled;
     }
 
     public double getAvarageRating() {
