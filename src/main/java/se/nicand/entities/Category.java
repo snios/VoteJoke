@@ -9,7 +9,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String description;
-    @OneToMany()
+    @OneToMany(mappedBy = "category")
     private List<Joke> jokes;
 
     public long getId() {

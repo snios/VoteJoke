@@ -17,7 +17,7 @@ public class Joke implements Serializable{
     @OneToMany (mappedBy = "joke")
     private List<Report> reports;
     @JoinColumn(name = "CATEGORY_ID",nullable = false)
-    @ManyToOne()
+    @ManyToOne
     private Category category;
 
     private int ratingValue = 0;
@@ -97,10 +97,10 @@ public class Joke implements Serializable{
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String author) {
-        Author = author;
+        author = author;
     }
 }
