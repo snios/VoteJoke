@@ -28,7 +28,6 @@ public class JokeBean implements Serializable {
     @PostConstruct
     public void init(){
         this.jokes = dbManager.getAllJokes();
-        jokes.get(2).getVotes();
 
     }
 
