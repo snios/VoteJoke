@@ -24,11 +24,11 @@
                     <f:facet name="header">
                         <h:graphicImage library="images" name="#{joke.category.description}.png" width="50px" height="50px"/>
                     </f:facet>
-
+                    <br/>
                     <h:outputText value="#{joke.jokeText}"/>
 
                         <b:row style="text-align:center">
-                            <p:outputLabel value="Rate joke! Current rating: "></p:outputLabel>  <p:outputLabel value="#{joke.avarageRating}">
+                            <p:outputLabel value="Rate joke! Current rating: #{joke.avarageRating}">
                             <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
                         </p:outputLabel>
                             <p:rating value="#{joke.ratingValue}" cancel="false" stars="5" style="text-align:center">
@@ -49,6 +49,9 @@
                                 </b:commandButton>
                             </b:column>
                         </b:row>
+                    <f:facet name="footer">
+                      <h:outputText value="Author: " style="font-style: italic"></h:outputText> <p:outputLabel value="#{joke.author}"></p:outputLabel>
+                    </f:facet>
                 </p:panel>
             </p:dataGrid>
         </h:form>

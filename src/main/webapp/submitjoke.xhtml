@@ -7,6 +7,11 @@
 
         <b:form id="submitJoke">
             <b:row>
+                <b:column colMd="12">
+                    <b:inputText placeholder="Author..." value="#{submitJokeBean.author}"></b:inputText>
+                </b:column>
+            </b:row>
+            <b:row>
                 <b:column col-md="12">
                     <b:inputTextarea value="#{submitJokeBean.jokeText}"
                                      placeholder="Type joke here..."></b:inputTextarea>
@@ -24,8 +29,10 @@
                                      update="submitJoke"></b:commandButton>
                 </b:column>
             </b:row>
-            <b:row col-md="12">
-                <b:label value="#{submitJokeBean.statusText}"></b:label>
+            <b:row>
+                <b:column col-md="12">
+                    <b:label value="#{submitJokeBean.statusText}"></b:label>
+                </b:column>
             </b:row>
         </b:form>
 

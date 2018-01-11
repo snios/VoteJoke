@@ -27,8 +27,7 @@ public class VoteMiscBean {
 
     @PostConstruct
     public void init(){
-        this.jokes = dbManager.getJokesByCatId(4);
-        this.jokes.sort(Comparator.comparing(Joke::getAvarageRating).reversed());
+        refreshList();
     }
 
     public ArrayList<Joke> getJokes() {
@@ -53,6 +52,7 @@ public class VoteMiscBean {
             dbManager.reportJoke(selectedJoke.getId(), selectedJoke.getReportReason());
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "Your report was submitted!");
             FacesContext.getCurrentInstance().addMessage(null, message);
+            refreshList();
         }
     }
 
@@ -61,8 +61,12 @@ public class VoteMiscBean {
             dbManager.voteForJoke(selectedJoke.getId(), selectedJoke.getRatingValue());
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + selectedJoke.getRatingValue());
             FacesContext.getCurrentInstance().addMessage(null, message);
-            this.jokes = dbManager.getJokesByCatId(4);
-            this.jokes.sort(Comparator.comparing(Joke::getAvarageRating).reversed());
+            refreshList();
         }
+    }
+
+    public void refreshList(){
+        this.jokes = dbManager.getJokesByCatId(4);
+        this.jokes.sort(Comparator.comparing(Joke::getAvarageRating).reversed());
     }
 }

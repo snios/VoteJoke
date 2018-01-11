@@ -28,8 +28,7 @@ public class VoteNSFWBean implements Serializable{
 
     @PostConstruct
     public void init(){
-        this.jokes = dbManager.getJokesByCatId(1);
-        this.jokes.sort(Comparator.comparing(Joke::getAvarageRating).reversed());
+        refreshList();
     }
 
     public ArrayList<Joke> getJokes() {
@@ -54,6 +53,7 @@ public class VoteNSFWBean implements Serializable{
             dbManager.reportJoke(selectedJoke.getId(), selectedJoke.getReportReason());
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "Your report was submitted!");
             FacesContext.getCurrentInstance().addMessage(null, message);
+            refreshList();
         }
     }
 
@@ -62,8 +62,12 @@ public class VoteNSFWBean implements Serializable{
             dbManager.voteForJoke(selectedJoke.getId(), selectedJoke.getRatingValue());
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + selectedJoke.getRatingValue());
             FacesContext.getCurrentInstance().addMessage(null, message);
-            this.jokes = dbManager.getJokesByCatId(1);
-            this.jokes.sort(Comparator.comparing(Joke::getAvarageRating).reversed());
+            refreshList();
         }
+    }
+
+    public void refreshList(){
+        this.jokes = dbManager.getJokesByCatId(1);
+        this.jokes.sort(Comparator.comparing(Joke::getAvarageRating).reversed());
     }
 }

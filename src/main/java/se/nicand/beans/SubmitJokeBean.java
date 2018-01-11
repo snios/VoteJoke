@@ -20,6 +20,7 @@ public class SubmitJokeBean implements Serializable{
     private String jokeText = "";
     private int categoryId = 0;
     private String statusText = "";
+    private String author = "";
 
     @PostConstruct
     public void init(){
@@ -62,10 +63,22 @@ public class SubmitJokeBean implements Serializable{
         this.categories = categories;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String submitJoke(){
         if(this.categoryId > 0){
-            dbManager.submitJoke(jokeText,categoryId);
+            if(author.equalsIgnoreCase("")){
+                author = "Unknown Author";
+            }
+            dbManager.submitJoke(jokeText,categoryId, author);
             jokeText = "";
+            author = "";
             statusText = "Joke was successfully submitted!";
             return "index.jsf?faces-redirect=true";
         }else{

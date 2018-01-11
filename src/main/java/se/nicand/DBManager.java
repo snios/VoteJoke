@@ -18,12 +18,12 @@ public class DBManager {
     @PersistenceContext(name = "jokedb")
     private EntityManager em;
 
-    public void submitJoke(String jokeText,int categoryId){
+    public void submitJoke(String jokeText,int categoryId, String author){
        Category category = em.find(Category.class,Long.valueOf(categoryId));
-       System.out.println(category.getDescription());
        Joke joke1 = new Joke();
        joke1.setCategory(category);
        joke1.setJokeText(jokeText);
+       joke1.setAuthor(author);
        em.persist(joke1);
 
     }
@@ -46,16 +46,7 @@ public class DBManager {
         List<Joke> jokes = em.createQuery(cq).getResultList();
         ArrayList<Joke> catJoke = new ArrayList<Joke>();
         for(Joke jk : jokes){
-            if(jk.getCategory().getId() == categoryId){
-                if(jk.getVotes().size() > 0){
-                    double avarage = 0;
-                    int amountOfVotes = 0;
-                    for(Vote vote : jk.getVotes()){
-                        avarage += vote.getValue();
-                        amountOfVotes++;
-                    }
-                    jk.setAvarageRating(avarage / amountOfVotes);
-                }
+            if(jk.getCategory().getId() == categoryId && jk.isDisabled() == false){
                 catJoke.add(jk);
             }
         }
@@ -90,6 +81,5 @@ public class DBManager {
         em.persist(report);
         em.flush();
     }
-
 
 }
