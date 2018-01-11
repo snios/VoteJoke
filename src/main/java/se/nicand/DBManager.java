@@ -47,15 +47,6 @@ public class DBManager {
         ArrayList<Joke> catJoke = new ArrayList<Joke>();
         for(Joke jk : jokes){
             if(jk.getCategory().getId() == categoryId){
-                if(jk.getVotes().size() > 0){
-                    double avarage = 0;
-                    int amountOfVotes = 0;
-                    for(Vote vote : jk.getVotes()){
-                        avarage += vote.getValue();
-                        amountOfVotes++;
-                    }
-                    jk.setAvarageRating(avarage / amountOfVotes);
-                }
                 catJoke.add(jk);
             }
         }
