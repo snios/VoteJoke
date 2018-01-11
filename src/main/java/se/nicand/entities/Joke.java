@@ -10,9 +10,9 @@ public class Joke implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String jokeText;
-    @OneToMany
+    @OneToMany (mappedBy = "joke")
     private List<Vote> votes;
-    @OneToMany
+    @OneToMany (mappedBy = "joke")
     private List<Report> reports;
     @JoinColumn(name = "CATEGORY_ID",nullable = false)
     @ManyToOne()
@@ -20,6 +20,7 @@ public class Joke implements Serializable{
 
     private int ratingValue = 0;
     private String reportReason = "";
+    private double avarageRating = 0;
 
     public long getId() {
         return id;
@@ -75,5 +76,13 @@ public class Joke implements Serializable{
 
     public void setReportReason(String reportReason) {
         this.reportReason = reportReason;
+    }
+
+    public double getAvarageRating() {
+        return avarageRating;
+    }
+
+    public void setAvarageRating(double avarageRating) {
+        this.avarageRating = avarageRating;
     }
 }

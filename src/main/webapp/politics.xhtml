@@ -28,10 +28,12 @@
                     <h:outputText value="#{joke.jokeText}"/>
 
                     <b:row style="text-align:center">
-                        <p:outputLabel value="Rate joke:"></p:outputLabel>
+                        <p:outputLabel value="Rate joke! Current rating: "></p:outputLabel>  <p:outputLabel value="#{joke.avarageRating}">
+                        <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
+                    </p:outputLabel>
                         <p:rating value="#{joke.ratingValue}" cancel="false" stars="5" style="text-align:center">
                         </p:rating>
-                        <b:commandButton look="success" value="Submit vote" style="margin: 0 auto text-align:center" action="#{votePoliticsBean.vote}" update="messages">
+                        <b:commandButton look="success" value="Submit vote" style="margin: 0 auto text-align:center" action="#{votePoliticsBean.vote}" update="messages jokeform">
                             <f:setPropertyActionListener value="#{joke}" target="#{votePoliticsBean.selectedJoke}" />
                         </b:commandButton>
                     </b:row>
@@ -41,7 +43,7 @@
                             <b:inputText value="#{joke.reportReason}" placeholder="Reason..."></b:inputText>
                         </b:column>
                         <b:column span="2">
-                            <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center" action="#{votePoliticsBean.report}" update="messages">
+                            <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center" action="#{votePoliticsBean.report}" update="messages jokeform">
                                 <f:setPropertyActionListener value="#{joke}" target="#{votePoliticsBean.selectedJoke}" />
                             </b:commandButton>
                         </b:column>

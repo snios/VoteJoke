@@ -9,7 +9,7 @@
 
 
     <b:container>
-        <h:form>
+        <h:form id="jokeform">
             <p:dataGrid var="joke" value="#{voteMiscBean.jokes}" columns="1" layout="grid"
                         rows="8" paginator="true" id="jokes"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -29,10 +29,12 @@
 
 
                     <b:row style="text-align:center">
-                        <p:outputLabel value="Rate joke:"></p:outputLabel>
+                        <p:outputLabel value="Rate joke! Current rating: "></p:outputLabel>  <p:outputLabel value="#{joke.avarageRating}">
+                        <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
+                    </p:outputLabel>
                         <p:rating value="#{joke.ratingValue}" cancel="false" stars="5" style="text-align:center">
                         </p:rating>
-                        <b:commandButton look="success" value="Submit vote" style="margin: 0 auto text-align:center" action="#{voteMiscBean.vote}" update="messages">
+                        <b:commandButton look="success" value="Submit vote" style="margin: 0 auto text-align:center" action="#{voteMiscBean.vote}" update="messages jokeform">
                             <f:setPropertyActionListener value="#{joke}" target="#{voteMiscBean.selectedJoke}" />
                         </b:commandButton>
                     </b:row>
@@ -42,7 +44,7 @@
                             <b:inputText value="#{joke.reportReason}" placeholder="Reason..."></b:inputText>
                         </b:column>
                         <b:column span="2">
-                            <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center" action="#{voteMiscBean.report}" update="messages">
+                            <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center" action="#{voteMiscBean.report}" update="messages jokeform">
                                 <f:setPropertyActionListener value="#{joke}" target="#{voteMiscBean.selectedJoke}" />
                             </b:commandButton>
                         </b:column>
