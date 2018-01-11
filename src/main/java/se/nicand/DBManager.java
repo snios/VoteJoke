@@ -1,15 +1,13 @@
 package se.nicand;
 
-import se.nicand.entities.Category;
-import se.nicand.entities.Joke;
-import se.nicand.entities.Report;
-import se.nicand.entities.Vote;
+import se.nicand.entities.*;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +30,8 @@ public class DBManager {
     public List<Joke> getAllJokes(){
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Joke>  cq = cb.createQuery(Joke.class);
+        Root<Joke> jokeRoot = cq.from(Joke.class);
+        cq.where(cb.equal(jokeRoot.get(Joke_.isDisabled),false));
         List<Joke> jokes = em.createQuery(cq).getResultList();
         return jokes;
     }
