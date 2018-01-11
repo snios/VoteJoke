@@ -95,11 +95,4 @@ public class Joke implements Serializable{
         this.avarageRating = avarageRating;
     }
 
-    public boolean isDisabled() {
-        return isDisabled;
-    }
-
-    public void setDisabled(boolean disabled) {
-        isDisabled = disabled;
-    }
 }
