@@ -82,6 +82,9 @@ public class DBManager {
     public void reportJoke(long jokeid, String reason){
         Report report = new Report();
         Joke joke = em.find(Joke.class,jokeid);
+        if (joke.getReports().size() == 9){
+            joke.setDisabled(true);
+        }
         report.setJoke(joke);
         report.setReason(reason);
         em.persist(report);
