@@ -97,7 +97,7 @@ public class Joke implements Serializable{
         author = author;
     }
 
-    public double getRating(){
+    public double getAverageRating(){
         double rating = 0;
         int nVotes = 0;
         if(votes.size() > 0){
