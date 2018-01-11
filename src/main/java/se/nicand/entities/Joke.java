@@ -11,7 +11,7 @@ public class Joke implements Serializable{
     private long id;
     private String jokeText;
     private boolean isDisabled;
-    private String Author;
+    private String author;
     @OneToMany(mappedBy = "joke")
     private List<Vote> votes;
     @OneToMany (mappedBy = "joke")
