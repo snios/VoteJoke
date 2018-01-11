@@ -28,9 +28,9 @@
                     <h:outputText value="#{joke.jokeText}"/>
 
                         <b:row style="text-align:center">
-                            <p:outputLabel value="Rate joke! Current rating: "></p:outputLabel>  <p:outputLabel value="#{joke.avarageRating}">
-                            <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
-                        </p:outputLabel>
+                            <p:outputLabel value="Rate joke! Current rating: #{joke.rating}">
+                                <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
+                            </p:outputLabel>
                             <p:rating value="#{joke.ratingValue}" cancel="false" stars="5" style="text-align:center">
                             </p:rating>
 
@@ -41,7 +41,7 @@
                         <br/>
                         <b:row style="text-align:center">
                             <b:column span="2" offset="4">
-                                <b:inputText value="#{joke.reportReason}" placeholder="Reason..."></b:inputText>
+                                <b:inputText value="#{joke.reportReason}" placeholder="Reason..."/>
                             </b:column>
                             <b:column span="2">
                                 <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center" action="#{voteSportBean.report}" update="messages jokeform">

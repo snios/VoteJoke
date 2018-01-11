@@ -20,9 +20,10 @@ public class Joke implements Serializable{
     @ManyToOne
     private Category category;
 
+    @Transient
     private int ratingValue = 0;
+    @Transient
     private String reportReason = "";
-    private double avarageRating = 0;
 
     public long getId() {
         return id;
@@ -88,19 +89,24 @@ public class Joke implements Serializable{
         isDisabled = disabled;
     }
 
-    public double getAvarageRating() {
-        return avarageRating;
-    }
-
-    public void setAvarageRating(double avarageRating) {
-        this.avarageRating = avarageRating;
-    }
-
     public String getAuthor() {
         return author;
     }
 
     public void setAuthor(String author) {
         author = author;
+    }
+
+    public double getRating(){
+        double rating = 0;
+        int nVotes = 0;
+        if(votes.size() > 0){
+            for(Vote v: votes){
+                rating += v.getValue();
+                nVotes++;
+            }
+            return rating / nVotes;
+        }
+       return 0;
     }
 }
