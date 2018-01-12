@@ -16,9 +16,9 @@
 <h:body style="padding-top: 50px; padding-bottom: 20px;">
     <p:growl id="messages" showDetail="true" life="2000" />
     <ui:include src="menubar.xhtml" />
-    <b:jumbotron>
+    <b:jumbotron id="headerText">
         <b:container>
-                <h2>Why was Santa's little helper feeling depressed? <b>- Because he has low elf esteem</b>  </h2>
+                <h2>#{navigationBean.header}</h2>
         </b:container>
     </b:jumbotron>
     <b:container>

@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Queue;
 
 @Named
 @SessionScoped
@@ -24,6 +25,7 @@ public class JokeBean implements Serializable {
     private Joke selectedJoke;
     private List<Joke> jokes;
     private int rating = 4;
+    private Queue<Joke> jokeQueue;
 
     @PostConstruct
     public void init(){

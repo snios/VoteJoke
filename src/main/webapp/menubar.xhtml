@@ -7,20 +7,20 @@
             <b:navBar brand="VoteJoke" brandHref="index.xhtml" inverse="true" fixed="top">
                 <b:navbarLinks>
                     <b:navLink value="RANDOM"/>
-                    <b:navLink value="SUBMIT JOKE" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('submitjoke.xhtml')"></b:navLink>
-                    <b:navLink value="Sport" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('sportjoke.xhtml')"></b:navLink>
-                    <b:navLink value="NSWF" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('nsfwjoke.xhtml')"></b:navLink>
-                    <b:navLink value="Dark" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('darkjoke.xhtml')"></b:navLink>
-                    <b:navLink value="Insult" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('insultjoke.xhtml')"></b:navLink>
-                    <b:navLink value="Misc" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('miscjoke.xhtml')"></b:navLink>
-                    <b:navLink value="Politics" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('politics.xhtml')"></b:navLink>
+                    <b:navLink value="SUBMIT JOKE" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('submitjoke.xhtml')"/>
+                    <b:navLink value="Sport" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('sportjoke.xhtml')"/>
+                    <b:navLink value="NSWF" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('nsfwjoke.xhtml')"/>
+                    <b:navLink value="Dark" update=" headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('darkjoke.xhtml')"/>
+                    <b:navLink value="Insult" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('insultjoke.xhtml')"/>
+                    <b:navLink value="Misc" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('miscjoke.xhtml')"/>
+                    <b:navLink value="Politics" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('politics.xhtml')"/>
                 </b:navbarLinks>
             </b:navBar>
         </h:form>
