@@ -19,7 +19,7 @@ public class NavigationBean implements Serializable{
     public void setPage(String page) {
         switch (page){
             case "darkjoke.xhtml":
-                header = "Darkness is upon us!";
+                header = "Dark, dark jokes!";
                 break;
             case "index.html":
                     header = "Vote on jokes!";
@@ -41,6 +41,9 @@ public class NavigationBean implements Serializable{
                 break;
             case "sportjoke.xhtml":
                 header = "Sports... How funny can it be?";
+                break;
+            case "randomjoke.xhtml":
+                header = "GL HF!";
                 break;
                 default:
                     header = "Were are we?";

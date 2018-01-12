@@ -8,13 +8,13 @@
         <b:form id="submitJoke">
             <b:row>
                 <b:column colMd="12">
-                    <b:inputText placeholder="Author..." value="#{submitJokeBean.author}"></b:inputText>
+                    <b:inputText placeholder="Author..." value="#{submitJokeBean.author}"/>
                 </b:column>
             </b:row>
             <b:row>
                 <b:column col-md="12">
                     <b:inputTextarea value="#{submitJokeBean.jokeText}"
-                                     placeholder="Type joke here..."></b:inputTextarea>
+                                     placeholder="Type joke here..."/>
                 </b:column>
             </b:row>
             <b:row>
@@ -26,12 +26,12 @@
                 </b:column>
                 <b:column col-md="4">
                     <b:commandButton look="success" value="Submit Joke" action="#{submitJokeBean.submitJoke}"
-                                     update="submitJoke"></b:commandButton>
+                                     update="submitJoke"/>
                 </b:column>
             </b:row>
             <b:row>
                 <b:column col-md="12">
-                    <b:label value="#{submitJokeBean.statusText}"></b:label>
+                    <b:label value="#{submitJokeBean.statusText}"/>
                 </b:column>
             </b:row>
         </b:form>
