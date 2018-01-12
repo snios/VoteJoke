@@ -1,5 +1,6 @@
 package se.nicand.beans;
 
+
 import org.primefaces.event.RateEvent;
 import se.nicand.DBManager;
 import se.nicand.entities.Joke;
@@ -73,6 +74,5 @@ public class JokeBean implements Serializable {
     public void setSelectedJoke(Joke selectedJoke) {
         this.selectedJoke = selectedJoke;
     }
-
 
 }
