@@ -78,6 +78,7 @@ public class JokeBean implements Serializable {
     }
 
     public void getRandomJoke(){
+        this.jokes = dbManager.getAllJokes();
         int i = jokes.size();
         int randomValue = ThreadLocalRandom.current().nextInt(0,i);
         Joke oldJoke = this.ranJoke;
