@@ -14,6 +14,8 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Queue;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Named
 @SessionScoped
@@ -24,8 +26,8 @@ public class JokeBean implements Serializable {
 
     private Joke selectedJoke;
     private List<Joke> jokes;
+    private Joke ranJoke;
     private int rating = 4;
-    private Queue<Joke> jokeQueue;
 
     @PostConstruct
     public void init(){
@@ -64,6 +66,21 @@ public class JokeBean implements Serializable {
 
     public void setSelectedJoke(Joke selectedJoke) {
         this.selectedJoke = selectedJoke;
+    }
+
+    public void setRanJoke(Joke randomJoke) {
+        this.ranJoke = randomJoke;
+    }
+
+    public Joke getRanJoke() {
+        return ranJoke;
+    }
+
+    public void getRandomJoke(){
+        int i = jokes.size();
+        int randomValue = ThreadLocalRandom.current().nextInt(0,i);
+        this.ranJoke = this.jokes.get(randomValue);
+
     }
 
 

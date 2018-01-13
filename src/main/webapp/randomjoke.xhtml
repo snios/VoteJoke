@@ -6,10 +6,12 @@
              xmlns:ui="http://java.sun.com/jsf/facelets"
              xmlns:p="http://primefaces.org/ui"
              xmlns:fn="http://java.sun.com/jsp/jstl/functions">
-    <b:jumbotron>
-        <h1>Random jokes</h1>
-        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+    <b:jumbotron id ="randomJokeContainer">
+        <h1>Random joke</h1>
+        <p>#{jokeBean.ranJoke.jokeText}</p>
+        <h:form>
+            <b:commandButton look="success" value="NEXT" action="#{jokeBean.getRandomJoke}"
+                             update="randomJokeContainer"/>
+        </h:form>
     </b:jumbotron>
-
 </ui:fragment>
