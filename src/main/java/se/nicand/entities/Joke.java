@@ -9,6 +9,7 @@ public class Joke implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(length = 1024)
     private String jokeText;
     private boolean isDisabled;
     private String author;

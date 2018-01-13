@@ -41,6 +41,7 @@ public class JokeBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, message);
         dbManager.voteForJoke(Long.valueOf(selectedObjID), ((Integer) rateEvent.getRating()).intValue());
 
+
     }
 
     public List<Joke> getJokes() {
@@ -79,9 +80,14 @@ public class JokeBean implements Serializable {
     public void getRandomJoke(){
         int i = jokes.size();
         int randomValue = ThreadLocalRandom.current().nextInt(0,i);
+        Joke oldJoke = this.ranJoke;
         this.ranJoke = this.jokes.get(randomValue);
-
+        if(this.ranJoke == oldJoke){
+            while(this.ranJoke == oldJoke){
+                randomValue = ThreadLocalRandom.current().nextInt(0,i);
+                this.ranJoke = this.jokes.get(randomValue);
+            }
+        }
     }
-
 
 }

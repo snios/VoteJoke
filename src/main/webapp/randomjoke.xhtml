@@ -6,9 +6,9 @@
              xmlns:ui="http://java.sun.com/jsf/facelets"
              xmlns:p="http://primefaces.org/ui"
              xmlns:fn="http://java.sun.com/jsp/jstl/functions">
-    <b:jumbotron id ="randomJokeContainer">
+    <b:jumbotron id ="randomJokeContainer" >
         <h1>Random joke</h1>
-        <p>#{jokeBean.ranJoke.jokeText}</p>
+        <p style="min-height: 150px">#{jokeBean.ranJoke.jokeText}</p>
         <h:form>
             <b:commandButton look="success" value="NEXT" action="#{jokeBean.getRandomJoke}"
                              update="randomJokeContainer"/>
