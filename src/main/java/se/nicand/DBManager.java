@@ -16,7 +16,7 @@ public class DBManager {
     @PersistenceContext(name = "jokedb")
     private EntityManager em;
 
-    public void submitJoke(String jokeText,int categoryId, String author){
+    public void submitJoke(String jokeText, int categoryId, String author){
        Category category = em.find(Category.class,Long.valueOf(categoryId));
        System.out.println(category.getDescription());
        Joke joke1 = new Joke();

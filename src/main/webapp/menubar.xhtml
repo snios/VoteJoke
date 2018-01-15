@@ -4,23 +4,25 @@
              xmlns:b="http://bootsfaces.net/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
     <b:container>
         <h:form>
-            <b:navBar brand="VoteJoke" brandHref="index.xhtml" inverse="true" fixed="top">
+            <b:navBar brandImg="#{request.contextPath}/resources/images/logo.png" alt="VoteJoke" brandHref="index.xhtml" inverse="true" fixed="top">
                 <b:navbarLinks>
-                    <b:navLink value="RANDOM"/>
-                    <b:navLink value="SUBMIT JOKE" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('submitjoke.xhtml')"></b:navLink>
-                    <b:navLink value="Sport" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('sportjoke.xhtml')"></b:navLink>
-                    <b:navLink value="NSWF" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('nsfwjoke.xhtml')"></b:navLink>
-                    <b:navLink value="Dark" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('darkjoke.xhtml')"></b:navLink>
-                    <b:navLink value="Insult" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('insultjoke.xhtml')"></b:navLink>
-                    <b:navLink value="Misc" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('miscjoke.xhtml')"></b:navLink>
-                    <b:navLink value="Politics" update="@(.content)"
-                               onclick="ajax:navigationBean.setPage('politics.xhtml')"></b:navLink>
+                    <b:navLink value="RANDOM" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('randomjoke.xhtml')"/>
+                    <b:navLink value="SPORT" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('sportjoke.xhtml')"/>
+                    <b:navLink value="NSFW" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('nsfwjoke.xhtml')"/>
+                    <b:navLink value="DARK" update=" headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('darkjoke.xhtml')"/>
+                    <b:navLink value="INSULT" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('insultjoke.xhtml')"/>
+                    <b:navLink value="MISC" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('miscjoke.xhtml')"/>
+                    <b:navLink value="POLITICS" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('politics.xhtml')"/>
+                    <b:navLink iconAwesome="fa-upload" value="SUBMIT JOKE" update="headerText @(.content)"
+                               onclick="ajax:navigationBean.setPage('submitjoke.xhtml')"
+                               style=""/>
                 </b:navbarLinks>
             </b:navBar>
         </h:form>
