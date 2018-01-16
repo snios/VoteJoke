@@ -29,9 +29,10 @@
 
 
                     <b:row style="text-align:center">
-                        <p:outputLabel value="Rate joke! Current rating: #{joke.avarageRating}">
+                        <p:outputLabel value="Rate joke! Current rating: "></p:outputLabel>
+                        <h:outputText value="#{joke.avarageRating}" style="font-weight: bold">
                             <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
-                        </p:outputLabel>
+                        </h:outputText>
                         <p:rating value="#{joke.ratingValue}" cancel="false" stars="5" style="text-align:center">
                         </p:rating>
                         <b:commandButton look="success" value="Submit vote" style="margin: 0 auto text-align:center" action="#{voteMiscBean.vote}" update="messages jokeform">

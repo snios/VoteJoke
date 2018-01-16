@@ -2,6 +2,7 @@ package se.nicand.beans;
 
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
@@ -10,6 +11,10 @@ import java.io.Serializable;
 public class NavigationBean implements Serializable{
     private String page ="jokecarousell.xhtml";
     private String header = "Welcome! Try your best or vote like the rest.";
+
+    @Inject
+    private SubmitJokeBean submitJokeBean;
+
 
 
     public String getPage() {
@@ -37,6 +42,8 @@ public class NavigationBean implements Serializable{
                 header = "Politics...";
                 break;
             case "submitjoke.xhtml":
+                submitJokeBean.setStatusText("");
+                submitJokeBean.setCategoeryId(0);
                 header = "Think you're funny, huh? Time to prove it!";
                 break;
             case "sportjoke.xhtml":

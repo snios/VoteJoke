@@ -22,35 +22,40 @@
                 <p:panel header="#{joke.category.description}" style="text-align:center">
 
                     <f:facet name="header">
-                        <h:graphicImage library="images" name="#{joke.category.description}.png" width="50px" height="50px"/>
+                        <h:graphicImage library="images" name="#{joke.category.description}.png" width="50px"
+                                        height="50px"/>
                     </f:facet>
 
                     <h:outputText value="#{joke.jokeText}"/>
 
-                        <b:row style="text-align:center">
-                            <p:outputLabel value="Rate joke! Current rating: #{joke.avarageRating}">
+                    <b:row style="text-align:center">
+                        <p:outputLabel value="Rate joke! Current rating: "></p:outputLabel>
+                        <h:outputText value="#{joke.avarageRating}" style="font-weight: bold">
                             <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
-                        </p:outputLabel>
-                            <p:rating value="#{joke.ratingValue}" cancel="false" stars="5" style="text-align:center">
-                            </p:rating>
+                        </h:outputText>
+                        <p:rating value="#{joke.ratingValue}" cancel="false" stars="5" style="text-align:center">
+                        </p:rating>
 
-                            <b:commandButton look="success" value="Submit vote" style="margin: 0 auto text-align:center" action="#{voteSportBean.vote}" update="messages jokeform">
-                                <f:setPropertyActionListener value="#{joke}" target="#{voteSportBean.selectedJoke}" />
+                        <b:commandButton look="success" value="Submit vote" style="margin: 0 auto text-align:center"
+                                         action="#{voteSportBean.vote}" update="messages jokeform">
+                            <f:setPropertyActionListener value="#{joke}" target="#{voteSportBean.selectedJoke}"/>
+                        </b:commandButton>
+                    </b:row>
+                    <br/>
+                    <b:row style="text-align:center">
+                        <b:column span="2" offset="4">
+                            <b:inputText value="#{joke.reportReason}" placeholder="Reason..."></b:inputText>
+                        </b:column>
+                        <b:column span="2">
+                            <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center"
+                                             action="#{voteSportBean.report}" update="messages jokeform">
+                                <f:setPropertyActionListener value="#{joke}" target="#{voteSportBean.selectedJoke}"/>
                             </b:commandButton>
-                        </b:row>
-                        <br/>
-                        <b:row style="text-align:center">
-                            <b:column span="2" offset="4">
-                                <b:inputText value="#{joke.reportReason}" placeholder="Reason..."></b:inputText>
-                            </b:column>
-                            <b:column span="2">
-                                <b:commandButton look="danger" value="Report Joke" style="margin: 0 auto text-align:center" action="#{voteSportBean.report}" update="messages jokeform">
-                                    <f:setPropertyActionListener value="#{joke}" target="#{voteSportBean.selectedJoke}" />
-                                </b:commandButton>
-                            </b:column>
-                        </b:row>
+                        </b:column>
+                    </b:row>
                     <f:facet name="footer">
-                      <h:outputText value="Author: " style="font-style: italic"></h:outputText> <p:outputLabel value="#{joke.author}"></p:outputLabel>
+                        <h:outputText value="Author: " style="font-style: italic"></h:outputText> <p:outputLabel
+                            value="#{joke.author}"></p:outputLabel>
                     </f:facet>
                 </p:panel>
             </p:dataGrid>
