@@ -32,15 +32,7 @@ public class JokeBean implements Serializable {
     @PostConstruct
     public void init(){
         this.jokes = dbManager.getAllJokes();
-
-    }
-
-    public void onrate(RateEvent rateEvent) {
-        String selectedObjID = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("selectedObj");
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Thank you!", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
-        FacesContext.getCurrentInstance().addMessage(null, message);
-        dbManager.voteForJoke(Long.valueOf(selectedObjID), ((Integer) rateEvent.getRating()).intValue());
-
+        getRandomJoke();
 
     }
 

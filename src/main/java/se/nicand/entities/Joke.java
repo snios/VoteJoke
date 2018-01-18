@@ -25,6 +25,7 @@ public class Joke implements Serializable{
     private int ratingValue = 0;
     @Transient
     private String reportReason = "";
+    @Transient
     private double avarageRating = 0;
 
     public long getId() {

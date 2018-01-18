@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Named
 @SessionScoped
 public class NavigationBean implements Serializable{
-    private String page ="jokecarousell.xhtml";
+    private String page ="randomjoke.xhtml";
     private String header = "Welcome! Try your best or vote like the rest.";
 
     @Inject
