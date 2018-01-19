@@ -20,6 +20,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * Bean belongs to sportjoke.xhtml
+ */
 @RequestScoped
 @Named
 public class VoteSportBean implements Serializable{
@@ -31,7 +34,9 @@ public class VoteSportBean implements Serializable{
 
     @EJB
     private DBManager dbManager;
-
+    /**
+     * Initializes bean with values that is needed
+     */
     @PostConstruct
     public void init(){
         refreshList();
@@ -54,6 +59,10 @@ public class VoteSportBean implements Serializable{
     }
 
 
+    /**
+     * Method to report a joke  and calls the dbmanager to persist it.
+     * shows a pop-up in frontend and refresh joke list
+     */
     public void report(){
         if(selectedJoke != null && !selectedJoke.getReportReason().equalsIgnoreCase("")){
             dbManager.reportJoke(selectedJoke.getId(), selectedJoke.getReportReason());
@@ -63,6 +72,10 @@ public class VoteSportBean implements Serializable{
         }
     }
 
+    /**
+     * Method to vote on a joke and calls the dbmanager to persist it
+     * shows a pop-up in frontend and refresh joke list
+     */
     public void vote(){
         if(selectedJoke != null && selectedJoke.getRatingValue()>0){
             dbManager.voteForJoke(selectedJoke.getId(), selectedJoke.getRatingValue());
@@ -72,6 +85,9 @@ public class VoteSportBean implements Serializable{
         }
     }
 
+    /**
+     * Calls dbmanager to get jokes and sorts joke on average rating
+     */
     public void refreshList(){
         this.jokes = dbManager.getJokesByCatId(3);
         this.jokes.sort(Comparator.comparing(Joke::getAvarageRating).reversed());

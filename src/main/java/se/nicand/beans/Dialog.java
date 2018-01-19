@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.primefaces.context.RequestContext;
 
+
 @Named
 @SessionScoped
 public class Dialog implements Serializable{

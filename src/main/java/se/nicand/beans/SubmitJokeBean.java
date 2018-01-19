@@ -16,6 +16,9 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Bean belongs to submitjoke.xhtml
+ */
 @Named
 @SessionScoped
 public class SubmitJokeBean implements Serializable{
@@ -28,6 +31,9 @@ public class SubmitJokeBean implements Serializable{
     private String statusText = "";
     private String author = "";
 
+    /**
+     * Initializes bean with values that is needed
+     */
     @PostConstruct
     public void init(){
         categories = dbManager.getCategories();
@@ -77,6 +83,13 @@ public class SubmitJokeBean implements Serializable{
         this.author = author;
     }
 
+    /**
+     * Submits a joke and persist it to the database by calling dbmanager
+     * If author string is empty its value will be "unknown author" instead.
+     * Also resets the strings after the method is called
+     * If no category is picked it sets a new statustext and returns null
+     * @return
+     */
     public String submitJoke(){
         if(this.categoryId > 0){
             if(author.equalsIgnoreCase("")){

@@ -22,6 +22,9 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Bean belongs to randomjoke.xhtml
+ */
 @Named
 @SessionScoped
 public class JokeBean implements Serializable {
@@ -33,7 +36,9 @@ public class JokeBean implements Serializable {
     private List<Joke> jokes;
     private Joke ranJoke;
     private int rating = 4;
-
+    /**
+     * Initializes bean with values that is needed
+     */
     @PostConstruct
     public void init(){
         this.jokes = dbManager.getAllJokes();
@@ -74,6 +79,10 @@ public class JokeBean implements Serializable {
         return ranJoke;
     }
 
+    /**
+     * Changes this.ranJoke so a new random joke can be displayed.
+     * Same joke can't be displayed twice.
+     */
     public void getRandomJoke(){
         this.jokes = dbManager.getAllJokes();
         int i = jokes.size();

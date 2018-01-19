@@ -21,6 +21,12 @@ public class DBManager {
     @PersistenceContext(name = "jokedb")
     private EntityManager em;
 
+    /**
+     * Submits joke to database
+     * @param jokeText
+     * @param categoryId
+     * @param author
+     */
     public void submitJoke(String jokeText, int categoryId, String author){
        Category category = em.find(Category.class,Long.valueOf(categoryId));
        System.out.println(category.getDescription());
@@ -32,7 +38,10 @@ public class DBManager {
 
     }
 
-
+    /**
+     * Returns all jokes from database if they are not flagged as disabled
+     * @return
+     */
     public List<Joke> getAllJokes(){
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Joke>  cq = cb.createQuery(Joke.class);
@@ -42,10 +51,11 @@ public class DBManager {
         return jokes;
     }
 
-    public void getJokesByCategory(){
-
-    }
-
+    /**
+     * Returns all jokes from db for a specific category that are not flagged as disabled
+     * @param categoryId
+     * @return
+     */
     public ArrayList<Joke> getJokesByCatId(int categoryId){
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Joke>  cq = cb.createQuery(Joke.class);
@@ -59,6 +69,10 @@ public class DBManager {
         return catJoke;
     }
 
+    /**
+     * Returns all categories from db
+     * @return
+     */
     public List<Category> getCategories() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Category> cq = cb.createQuery(Category.class);
@@ -67,6 +81,11 @@ public class DBManager {
 
     }
 
+    /**
+     * Persists a new vote for a specific joke
+     * @param jokeid
+     * @param rating
+     */
     public void voteForJoke(long jokeid, int rating){
         Vote vote = new Vote();
         Joke joke = em.find(Joke.class,jokeid);
@@ -76,6 +95,12 @@ public class DBManager {
         em.flush();
     }
 
+    /**
+     * Persists a new report for a specific joke together with a reason
+     * Also flags joke as disabled if it has more than 9 reports
+     * @param jokeid
+     * @param reason
+     */
     public void reportJoke(long jokeid, String reason){
         Report report = new Report();
         Joke joke = em.find(Joke.class,jokeid);

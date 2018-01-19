@@ -18,6 +18,9 @@ import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * Bean belongs to politics.xhtml
+ */
 @RequestScoped
 @Named
 public class VotePoliticsBean {
@@ -29,7 +32,9 @@ public class VotePoliticsBean {
 
     @EJB
     private DBManager dbManager;
-
+    /**
+     * Initializes bean with values that is needed
+     */
     @PostConstruct
     public void init(){
         refreshList();
@@ -51,7 +56,10 @@ public class VotePoliticsBean {
         this.selectedJoke = selectedJoke;
     }
 
-
+    /**
+     * Method to report a joke  and calls the dbmanager to persist it.
+     * shows a pop-up in frontend and refresh joke list
+     */
     public void report(){
         if(selectedJoke != null && !selectedJoke.getReportReason().equalsIgnoreCase("")){
             dbManager.reportJoke(selectedJoke.getId(), selectedJoke.getReportReason());
@@ -60,7 +68,10 @@ public class VotePoliticsBean {
             refreshList();
         }
     }
-
+    /**
+     * Method to vote on a joke and calls the dbmanager to persist it
+     * shows a pop-up in frontend and refresh joke list
+     */
     public void vote(){
         if(selectedJoke != null && selectedJoke.getRatingValue()>0){
             dbManager.voteForJoke(selectedJoke.getId(), selectedJoke.getRatingValue());
@@ -69,7 +80,9 @@ public class VotePoliticsBean {
             refreshList();
         }
     }
-
+    /**
+     * Calls dbmanager to get jokes and sorts joke on average rating
+     */
     public void refreshList(){
         this.jokes = dbManager.getJokesByCatId(6);
         this.jokes.sort(Comparator.comparing(Joke::getAvarageRating).reversed());

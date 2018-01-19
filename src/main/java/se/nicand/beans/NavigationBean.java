@@ -11,6 +11,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
+/**
+ * Belongs to menubar.xhtml
+ */
 @Named
 @SessionScoped
 public class NavigationBean implements Serializable{
@@ -26,6 +29,10 @@ public class NavigationBean implements Serializable{
         return page;
     }
 
+    /**
+     * Changes the content of view depending on which category you pick.
+     * @param page
+     */
     public void setPage(String page) {
         switch (page){
             case "darkjoke.xhtml":
